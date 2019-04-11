@@ -1,0 +1,41 @@
+﻿@model IEnumerable<UCL_StickerAlbum.Models.Jugador>
+@{
+    ViewBag.Title = "VerGeneral";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<hr />
+<h2>Vista general</h2>
+<p>
+    @Html.ActionLink("Regresar", "Index", "Album")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Nombre)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Registrada)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Repetida)
+        </th>
+        <th></th>
+    </tr>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Nombre)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Registrada)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Repetida)
+            </td>
+            <td>
+                @Html.ActionLink("Detalle", "DetalleGeneral", new { id = item.Nombre })
+            </td>
+        </tr>
+    }
+</table>

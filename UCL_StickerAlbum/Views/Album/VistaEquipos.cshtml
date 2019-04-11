@@ -1,0 +1,48 @@
+﻿@model IEnumerable<UCL_StickerAlbum.Models.Equipo>
+
+@{
+    ViewBag.Title = "VistaEquipos";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<hr />
+<h2>Equipos</h2>
+<p>
+    @Html.ActionLink("Regresar", "Index", "Album")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.NombreEquipo)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Club)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Registradas)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Restantes)
+        </th>
+        <th></th>
+    </tr>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.NombreEquipo)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Club)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Registradas)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Restantes)
+            </td>
+            <td>
+                @Html.ActionLink("Detalles", "EquipoDetalle", new { id = item.NombreEquipo })
+            </td>
+        </tr>
+    }
+</table>

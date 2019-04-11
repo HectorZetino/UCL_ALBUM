@@ -171,10 +171,12 @@
     <Content Include="Views\Album\EquipoDetalle.cshtml" />
     <Content Include="Views\Album\EdicionDeJugador.cshtml" />
     <Content Include="Views\Album\Index.cshtml" />
+    <Content Include="Views\Album\VistaEquipos.cshtml" />
+    <Content Include="Views\Album\VistaGeneral.cshtml" />
+    <Content Include="Views\Archivo\CargaDeArchivo.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Views\Archivo\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
