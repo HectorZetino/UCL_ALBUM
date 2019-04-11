@@ -62,7 +62,7 @@ namespace UCL_StickerAlbum.Controllers
             {
                 try
                 {
-                    item.Value.Jugadores.Find(BuscadorJugador).Obtenida = obtenida;
+                    item.Value.Jugadores.Find(BuscadorJugador).Registrada = obtenida;
                     item.Value.Jugadores.Find(BuscadorJugador).Repetida = repetida;
 
                     var name = item.Key;

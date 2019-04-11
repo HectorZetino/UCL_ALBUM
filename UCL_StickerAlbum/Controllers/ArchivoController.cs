@@ -12,12 +12,12 @@ namespace UCL_StickerAlbum.Controllers
 {
     public class ArchivoController : Controller
     {
-        public ActionResult CargarArchivo()
+        public ActionResult CargaDeArchivo()
         {
             return View();
         }
         [HttpPost]
-        public ActionResult CargarArchivo(HttpPostedFileBase postedFile)
+        public ActionResult CargaDeArchivo(HttpPostedFileBase postedFile)
         {
             var FilePath = string.Empty;
             //Evaluar si el path está vacío, existe o no.

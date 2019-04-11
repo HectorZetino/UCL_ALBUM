@@ -1,4 +1,5 @@
 ﻿@using UCL_StickerAlbum.Instancia
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -24,13 +25,12 @@
                 <ul class="nav navbar-nav">
                     @if (Datos.Instance.UCLAlbum.Equipos.Count == 0)
                     {
-                        <li>@Html.ActionLink("Cargar álbum", "CargaDeArchivo", "Archivo")</li>
+                        <li>@Html.ActionLink("Album", "CargaDeArchivo", "Archivo")</li>
+                         
                     }
                     else
                     {
-                        <li>@Html.ActionLink("Álbum", "Index", "Album")</li>
-                        <li>@Html.ActionLink("Acerca de", "About", "Home")</li>
-                        <li>@Html.ActionLink("Contacto", "Contact", "Home")</li>
+                        <li>@Html.ActionLink("Album", "Index", "Album")</li>
                     }
                 </ul>
             </div>

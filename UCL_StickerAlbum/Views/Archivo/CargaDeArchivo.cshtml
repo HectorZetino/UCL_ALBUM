@@ -1,10 +1,10 @@
 ﻿@{
-    ViewBag.Title = "CargarArchivo";
+    ViewBag.Title = "CargarDeArchivo";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 <h2>Cargar álbum</h2>
 <h4>(Archivo a cargar --> Tipo *csv)</h4>
-@using (Html.BeginForm("CargarArchivo", "ManejoArchivo", FormMethod.Post, new { enctype = "multipart/form-data" }))
+@using (Html.BeginForm("CargaDeArchivo", "Archivo", FormMethod.Post, new { enctype = "multipart/form-data" }))
 {
     <label for="exampleInputFile">Entrada y lectura de archivo</label>
     <input type="file" class="form-control-file" name="postedFile" aria-describedby="fileHelp">

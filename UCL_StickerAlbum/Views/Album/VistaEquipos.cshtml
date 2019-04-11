@@ -18,7 +18,7 @@
             @Html.DisplayNameFor(model => model.Club)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Registradas)
+            @Html.DisplayNameFor(model => model.Registrada)
         </th>
         <th>
             @Html.DisplayNameFor(model => model.Restantes)
@@ -35,13 +35,13 @@
                 @Html.DisplayFor(modelItem => item.Club)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Registradas)
+                @Html.DisplayFor(modelItem => item.Registrada)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.Restantes)
             </td>
             <td>
-                @Html.ActionLink("Detalles", "EquipoDetalle", new { id = item.NombreEquipo })
+                @Html.ActionLink("EquipoDetalle", "EquipoDetalle", new { id = item.NombreEquipo })
             </td>
         </tr>
     }
