@@ -15,61 +15,61 @@ namespace UCL_StickerAlbum.Controllers
         {
             return View();
         }
-        public ActionResult VerEquipos()
+        public ActionResult VistaEquipos()
         {
             return View(Datos.Instance.UCLAlbum._Equipos);
         }
-        public ActionResult DetailsEquipo(string id)
+        public ActionResult EquipoDetalle(string id)
         {
 
             return View(Datos.Instance.UCLAlbum.Equipos[id].Jugadores);
         }
 
-        public ActionResult EditarJugador(string id)
+        public ActionResult EdicionDeJugador(string id)
         {
             return View(Datos.Instance.UCLAlbum.General[id]);
         }
 
         [HttpPost]
-        public ActionResult EditarJugador(string id, FormCollection collection)
+        public ActionResult EdicionDeJugador(string id, FormCollection collection)
         {
-            bool obtenida = false;
+            bool Registrada = false;
             var aux = collection["check"];
 
             if (aux == "Si" || aux == "si" || aux == "SI")
             {
-                obtenida = true;
+                Registrada = true;
             }
             else
             {
-                obtenida = false;
+                Registrada = false;
             }
 
             var repetida = int.Parse(collection["Repetida"]);
 
             //Genera id único para los stickers registrados
-            Datos.Instance.UCLAlbum.General[id].Registrada = obtenida;
+            Datos.Instance.UCLAlbum.General[id].Registrada = Registrada;
             //Genera id único para los stikers repetidos
             Datos.Instance.UCLAlbum.General[id].Repetida = repetida;
 
             Predicate<Jugador> BuscadorJugador = (Jugador jugador) => { return jugador.Nombre == id; };
 
             //Detección de cada uno de los sticker y evalua si serán registrados o estarán repetidos
-            Datos.Instance.UCLAlbum._General.Find(BuscadorJugador).Registrada = obtenida;
+            Datos.Instance.UCLAlbum._General.Find(BuscadorJugador).Registrada = Registrada;
             Datos.Instance.UCLAlbum._General.Find(BuscadorJugador).Repetida = repetida;
 
             foreach (var item in Datos.Instance.UCLAlbum.Equipos)
             {
                 try
                 {
-                    item.Value.Jugadores.Find(BuscadorJugador).Registrada = obtenida;
+                    item.Value.Jugadores.Find(BuscadorJugador).Registrada = Registrada;
                     item.Value.Jugadores.Find(BuscadorJugador).Repetida = repetida;
 
                     var name = item.Key;
 
                     Predicate<Equipo> BuscadorEquipo = (Equipo equipo) => { return equipo.NombreEquipo == name; };
 
-                    Datos.Instance.UCLAlbum._Equipos.Find(BuscadorEquipo).Jugadores.Find(BuscadorJugador).Registrada = obtenida;
+                    Datos.Instance.UCLAlbum._Equipos.Find(BuscadorEquipo).Jugadores.Find(BuscadorJugador).Registrada = Registrada;
                     Datos.Instance.UCLAlbum._Equipos.Find(BuscadorEquipo).Jugadores.Find(BuscadorJugador).Repetida = repetida;
                     Datos.Instance.UCLAlbum._Equipos.Find(BuscadorEquipo).Calcular();
                 }
@@ -78,16 +78,16 @@ namespace UCL_StickerAlbum.Controllers
                     //Captura de excepciones para evitar errores o paros de ejecución
                 }
             }
-            return RedirectToAction("VerEquipos");
+            return RedirectToAction("VistaEquipos");
         }
-        public ActionResult VerGeneral()
+        public ActionResult VistaGeneral()
         {
             return View(Datos.Instance.UCLAlbum._General);
         }
         public ActionResult DetallesGeneral(string id)
         {
             var ID = id;
-            return RedirectToAction("EditarJugador", "Album", new { id = ID });
+            return RedirectToAction("EdicionDeJugador", "Album", new { id = ID });
         }
     }
 }
